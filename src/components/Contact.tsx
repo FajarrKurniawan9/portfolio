@@ -3,7 +3,6 @@
 import { useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
 import FadeIn from "./FadeIn";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -14,6 +13,7 @@ export default function Contact() {
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -24,22 +24,30 @@ export default function Contact() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          message: form.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-      );
+      // Panggil API Route kita — bukan EmailJS langsung!
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Tampilkan error message dari server
+        setErrorMessage(data.error || "Terjadi kesalahan!");
+        setStatus("error");
+        return;
+      }
+
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
     } catch (error) {
       console.error(error);
+      setErrorMessage("Tidak dapat terhubung ke server!");
       setStatus("error");
     }
   }
@@ -118,12 +126,20 @@ export default function Contact() {
                 />
               </div>
 
+              {/* Error message dari server */}
+              {status === "error" && (
+                <div className="px-4 py-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                  <p className="text-red-400 text-sm">{errorMessage}</p>
+                </div>
+              )}
+
               {/* Tombol Submit */}
               <button
                 type="submit"
-                className="w-full py-3 bg-green-500 hover:bg-green-400 text-white font-semibold rounded-xl transition-colors"
+                disabled={status === "loading"}
+                className="w-full py-3 bg-green-500 hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors"
               >
-                Kirim Pesan
+                {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
               </button>
             </form>
           )}
