@@ -1,8 +1,25 @@
 import SectionTitle from "@/components/SectionTitle";
 import FadeIn from "@/components/FadeIn";
-import { projects } from "@/data/projects";
+import { Project } from "@/data/projects";
 
-export default function Projects() {
+async function getProjects(): Promise<Project[]> {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects`,
+      {
+        cache: "no-store", // selalu fetch data terbaru
+      },
+    );
+    const json = await response.json();
+    return json.data;
+  } catch {
+    return [];
+  }
+}
+
+export default async function Projects() {
+  const projects = await getProjects();
+
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
@@ -12,6 +29,15 @@ export default function Projects() {
             subtitle="Beberapa project yang pernah saya buat"
           />
         </FadeIn>
+
+        {/* Kalau data kosong */}
+        {projects.length === 0 && (
+          <FadeIn>
+            <p className="text-center text-mist-500">
+              Belum ada project. Nantikan ya!!
+            </p>
+          </FadeIn>
+        )}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
