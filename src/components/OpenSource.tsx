@@ -1,19 +1,61 @@
-import { Star, FolderGit2, GitCommitHorizontal } from "lucide-react";
+import { Star, FolderGit2, Users } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import FadeIn from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-const GITHUB_URL = "https://github.com/FajarrKurniawan9";
+const GITHUB_USERNAME = "FajarrKurniawan9";
+const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`;
 
-// TODO: angka di bawah masih placeholder — wire ke GitHub API (stars/repos/contributions) setelah generation.
-const stats = [
-  { label: "Stars", value: "—", icon: Star },
-  { label: "Repositories", value: "—", icon: FolderGit2 },
-  { label: "Contributions", value: "—", icon: GitCommitHorizontal },
-];
+type GithubStats = {
+  stars: number;
+  repos: number;
+  followers: number;
+};
 
-export default function OpenSource() {
+async function getGithubStats(): Promise<GithubStats | null> {
+  try {
+    const headers = { Accept: "application/vnd.github+json" };
+    const [userRes, reposRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
+        headers,
+        next: { revalidate: 3600 }, // GitHub's unauthenticated rate limit is 60 req/hr — refresh at most hourly
+      }),
+      fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`, {
+        headers,
+        next: { revalidate: 3600 },
+      }),
+    ]);
+
+    if (!userRes.ok || !reposRes.ok) return null;
+
+    const user: { public_repos: number; followers: number } = await userRes.json();
+    const repos: { stargazers_count: number }[] = await reposRes.json();
+    const stars = repos.reduce((sum, r) => sum + r.stargazers_count, 0);
+
+    return { stars, repos: user.public_repos, followers: user.followers };
+  } catch {
+    return null;
+  }
+}
+
+export default async function OpenSource() {
+  const github = await getGithubStats();
+
+  const stats = [
+    { label: "Stars", value: github ? String(github.stars) : "—", icon: Star },
+    {
+      label: "Repositories",
+      value: github ? String(github.repos) : "—",
+      icon: FolderGit2,
+    },
+    {
+      label: "Followers",
+      value: github ? String(github.followers) : "—",
+      icon: Users,
+    },
+  ];
+
   return (
     <section id="open-source" className="bg-surface px-6 py-24 md:px-16">
       <div className="mx-auto max-w-5xl">
