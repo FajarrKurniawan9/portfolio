@@ -14,11 +14,4 @@ export const experiences: Experience[] = [
     description: 'Belajar dasar-dasar pemrograman, web development, dan database. Fokus pada backend development menggunakan NestJS dan TypeScript.',
     type: 'education',
   },
-  {
-    year: 'Lorem Ipsum',
-    title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    place: 'Lorem ipsum dolor sit amet',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    type: 'experience',
-  },
 ]

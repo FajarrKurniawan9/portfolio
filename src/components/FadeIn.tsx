@@ -14,8 +14,8 @@ export default function FadeIn({
   direction = "up",
 }: FadeInProps) {
   const directionMap = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
+    up: { y: 20, x: 0 },
+    down: { y: -20, x: 0 },
     left: { x: 40, y: 0 },
     right: { x: -40, y: 0 },
   };
@@ -33,7 +33,7 @@ export default function FadeIn({
       }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.6,
+        duration: 0.5,
         delay,
         ease: "easeOut",
       }}

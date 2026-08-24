@@ -1,13 +1,100 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #e2e8f0;
-  --accent:  #06402B;
+  /* Design system palette — single source of truth for every color token below */
+  --background: 0 0% 4%; /* #0a0a0a near-black */
+  --surface: 0 0% 7%; /* #121212 surface */
+  --surface-raised: 0 0% 10%; /* #1a1a1a raised */
+  --border: 0 0% 13%; /* #212121 border */
+  --foreground: 0 0% 95%; /* #f2f2f2 off-white */
+  --primary: 142 72% 50%; /* #22d472 code green */
+  --primary-dark: 142 76% 38%; /* #18a355 hover */
+  --primary-glow: 142 72% 50% / 0.12;
+
+  /* shadcn/ui tokens, mapped onto the palette above so Button/Card/Badge stay on-system */
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--foreground);
+  --primary-foreground: var(--background); /* dark text reads clean on the bright green; white fails contrast (~2:1) */
+  --secondary: var(--surface-raised);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--surface-raised);
+  --muted-foreground: 0 0% 48%; /* raised from 42% so small muted text clears WCAG AA (~4.5:1) on the near-black background */
+  --accent: var(--surface-raised);
+  --accent-foreground: var(--foreground);
+  --destructive: 0 84% 63%;
+  --destructive-foreground: 0 0% 98%;
+  --input: var(--border);
+  --ring: var(--primary);
+  --radius: 0.5rem;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', sans-serif;
+@theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-surface: hsl(var(--surface));
+  --color-surface-raised: hsl(var(--surface-raised));
+  --color-primary-dark: hsl(var(--primary-dark));
+  --color-primary-glow: hsl(var(--primary-glow));
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Shared hover glow for every card-like surface (project cards, stack cards, timeline cards) */
+@utility glow-card {
+  transition:
+    border-color 0.18s,
+    box-shadow 0.18s;
+  &:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 32px hsl(142 72% 50% / 0.16);
+  }
 }

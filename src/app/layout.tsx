@@ -1,15 +1,36 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Sora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700", "800"],
+  variable: "--font-sans",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
+
+const SITE_NAME = "Muhammad Fajar Kurniawan";
+const SITE_DESCRIPTION =
+  "Backend Engineer yang berspesialisasi pada NestJS dan MySQL, kini terjun ke dunia Full-stack development.";
 
 export const metadata: Metadata = {
-  title: "Portofolio | Muhammad Fajar Kurniawan",
-  description:
-    "Backend Developer & Fullstack Enthusiast, Books & Philosophy Enthusiast",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000"),
+  title: `${SITE_NAME} — Backend Engineer & Fullstack Enthusiast`,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: `${SITE_NAME} — Backend Engineer & Fullstack Enthusiast`,
+    description: SITE_DESCRIPTION,
+    images: ["/FotoProfile.jpg"],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -18,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
-      <body className={inter.className}>
+    <html lang="id" className={cn(sora.variable, jetbrainsMono.variable)}>
+      <body className="antialiased">
         <Navbar />
         {children}
         <Footer />

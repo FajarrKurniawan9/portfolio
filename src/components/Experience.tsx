@@ -1,11 +1,13 @@
 import SectionTitle from "@/components/SectionTitle";
 import FadeIn from "./FadeIn";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { experiences } from "@/data/experience";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-6 bg-mist-900/30">
-      <div className="max-w-3xl mx-auto">
+    <section id="experience" className="px-6 py-24 md:px-16">
+      <div className="mx-auto max-w-3xl">
         <FadeIn>
           <SectionTitle
             title="Experience"
@@ -16,43 +18,44 @@ export default function Experience() {
         {/* Timeline */}
         <div className="relative">
           {/* Garis vertikal */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-mist-800" />
+          <div className="absolute top-0 bottom-0 left-4 w-px bg-border" />
 
           <div className="space-y-10">
             {experiences.map((item, index) => (
               <FadeIn key={index} delay={index * 0.15} direction="right">
-                <div key={index} className="relative pl-12">
+                <div className="relative pl-12">
                   {/* Titik di timeline */}
-                  <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-mist-900 border-2 border-green-500 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-green-400" />
+                  <div className="absolute top-1 left-0 flex size-8 items-center justify-center rounded-full border-2 border-primary bg-surface">
+                    <div className="size-2 rounded-full bg-primary" />
                   </div>
 
                   {/* Badge type */}
-                  <span
-                    className={`text-xs font-semibold px-2 py-0.5 rounded-full mb-2 inline-block ${
-                      item.type === "education"
-                        ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
-                        : "bg-green-500/10 text-green-400 border border-green-500/20"
-                    }`}
+                  <Badge
+                    variant={item.type === "education" ? "outline" : "tint"}
+                    className="mb-2 font-mono text-[10px] tracking-wide uppercase"
                   >
                     {item.type === "education" ? "Education" : "Experience"}
-                  </span>
+                  </Badge>
 
                   {/* Konten */}
-                  <div className="bg-mist-900/50 border border-mist-800 rounded-2xl p-5">
-                    <div className="flex items-start justify-between gap-4 mb-2">
-                      <h3 className="text-white font-semibold">{item.title}</h3>
-                      <span className="text-green-400 text-sm shrink-0">
+                  <Card className="glow-card rounded-xl border border-border bg-surface p-5">
+                    <div className="mb-2 flex items-start justify-between gap-4">
+                      <h3 className="font-semibold text-foreground">
+                        {item.title}
+                      </h3>
+                      <span className="shrink-0 font-mono text-sm text-primary">
                         {item.year}
                       </span>
                     </div>
-                    <p className="text-mist-500 text-sm mb-3">{item.place}</p>
-                    <p className="text-mist-400 text-sm leading-relaxed">
+                    <p className="mb-3 text-sm text-muted-foreground">
+                      {item.place}
+                    </p>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {item.description}
                     </p>
-                  </div>
+                  </Card>
                 </div>
-              </FadeIn> 
+              </FadeIn>
             ))}
           </div>
         </div>
