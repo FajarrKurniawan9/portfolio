@@ -3,22 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import FadeIn from "@/components/FadeIn";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Project } from "@/data/projects";
-
-async function getProjects(): Promise<Project[]> {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/projects`,
-      {
-        cache: "no-store", // selalu fetch data terbaru
-      },
-    );
-    const json = await response.json();
-    return json.data;
-  } catch {
-    return [];
-  }
-}
+import { projects, Project } from "@/data/projects";
 
 function ProjectMockup({ project }: { project: Project }) {
   if (project.image) {
@@ -53,9 +38,7 @@ function ProjectMockup({ project }: { project: Project }) {
   );
 }
 
-export default async function Projects() {
-  const projects = await getProjects();
-
+export default function Projects() {
   return (
     <section id="projects" className="px-6 py-24 md:px-16">
       <div className="mx-auto max-w-5xl">

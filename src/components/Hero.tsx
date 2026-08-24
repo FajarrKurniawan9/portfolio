@@ -96,7 +96,8 @@ export default function Hero() {
             <span className="text-muted-foreground">const</span> fajar = {"{"}
           </p>
           <p className="pl-4 text-foreground">
-            role: <span className="text-primary">&quot;Backend Engineer&quot;</span>,
+            role:{" "}
+            <span className="text-primary">&quot;Backend Engineer&quot;</span>,
           </p>
           <p className="pl-4 text-foreground">
             stack: [
