@@ -12,7 +12,7 @@ export default function About() {
   const stats = [
     { label: "Tahun Ngoding", value: `${yearsCoding}+` },
     { label: "Proyek Dibuat", value: `${projects.length}` },
-    { label: "Status", value: "Siswa SMK · PKL" },
+    { label: "Status", value: "Siswa SMK" },
   ];
 
   return (
