@@ -88,13 +88,3 @@
   }
 }
 
-/* Shared hover glow for every card-like surface (project cards, stack cards, timeline cards) */
-@utility glow-card {
-  transition:
-    border-color 0.18s,
-    box-shadow 0.18s;
-  &:hover {
-    border-color: hsl(var(--primary));
-    box-shadow: 0 0 32px hsl(142 72% 50% / 0.16);
-  }
-}

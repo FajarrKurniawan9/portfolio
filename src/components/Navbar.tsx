@@ -5,36 +5,38 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Overview", href: "#hero" },
+  { label: "Dossier", href: "#about" },
+  { label: "Stack", href: "#skills" },
+  { label: "Architectures", href: "#projects" },
+  { label: "Track Record", href: "#experience" },
+  { label: "VCS", href: "#open-source" },
+  { label: "Dispatch", href: "#contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 z-50 w-full border-b border-border bg-background/92 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 md:px-16">
-        {/* Logo */}
-        <a href="#hero" className="flex flex-col leading-tight">
-          <span className="font-sans text-base font-bold text-foreground">
-            Fajar Kurniawan
+    <nav className="fixed top-0 z-50 w-full border-b border-white/[0.08] bg-zinc-950/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2.5 md:px-12 lg:px-16">
+        {/* Monospace System Header */}
+        <a href="#hero" className="flex items-center gap-2.5 font-mono text-xs">
+          <span className="size-2 rounded-full bg-emerald-500" />
+          <span className="font-semibold text-white tracking-tight">
+            FAJAR_KURNIAWAN
           </span>
-          <span className="font-mono text-[10px] text-primary">
-            Backend Engineer
-          </span>
+          <span className="text-zinc-600">//</span>
+          <span className="hidden sm:inline text-zinc-400">BACKEND_DEV</span>
         </a>
 
-        {/* Desktop Links */}
-        <ul className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
+        {/* Desktop Links with Geist clean hover */}
+        <ul className="hidden items-center gap-6 font-mono text-xs text-zinc-400 md:flex">
           {navLinks.map((link) => (
             <li key={link.label}>
               <a
                 href={link.href}
-                className="transition-colors hover:text-primary"
+                className="transition-colors hover:text-white"
               >
                 {link.label}
               </a>
@@ -42,48 +44,50 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
-        <Button
-          size="sm"
-          nativeButton={false}
-          className="hidden font-sans text-xs font-semibold md:inline-flex"
-          render={<a href="#contact" />}
-        >
-          Hire me →
-        </Button>
+        {/* Desktop Action */}
+        <div className="hidden md:flex items-center gap-3">
+          <Button
+            size="sm"
+            nativeButton={false}
+            className="h-7 rounded-none border border-white bg-white px-3 font-sans text-xs font-medium text-black transition-colors hover:bg-zinc-200"
+            render={<a href="#contact" />}
+          >
+            Initiate Contact
+          </Button>
+        </div>
 
-        {/* Hamburger Button — mobile only */}
+        {/* Mobile menu trigger */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-foreground md:hidden"
+          className="text-zinc-300 md:hidden"
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       {isOpen && (
-        <div className="border-t border-border bg-background md:hidden">
-          <ul className="flex flex-col gap-4 px-6 py-6">
+        <div className="border-t border-white/[0.08] bg-black px-6 py-4 md:hidden">
+          <ul className="flex flex-col gap-3 font-mono text-xs text-zinc-400">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-1 text-muted-foreground transition-colors hover:text-primary"
+                  className="block py-1 transition-colors hover:text-white"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
-            <li>
+            <li className="pt-2">
               <Button
                 nativeButton={false}
-                className="mt-2 w-full font-sans text-xs font-semibold"
+                className="w-full rounded-none border border-white bg-white font-sans text-xs font-medium text-black"
                 render={<a href="#contact" onClick={() => setIsOpen(false)} />}
               >
-                Hire me →
+                Initiate Contact
               </Button>
             </li>
           </ul>

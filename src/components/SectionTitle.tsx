@@ -1,16 +1,23 @@
 type SectionTitleProps = {
-  title: string
-  subtitle: string
-}
+  title: string;
+  subtitle: string;
+  badge?: string;
+};
 
-export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
+export default function SectionTitle({ title, subtitle, badge }: SectionTitleProps) {
   return (
-    <div className="text-center mb-12">
-      <h2 className="text-3xl md:text-4xl font-extrabold tracking-[-0.04em] text-foreground mb-3">
+    <div className="mb-12">
+      {badge && (
+        <span className="mb-2 inline-block font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+          // {badge}
+        </span>
+      )}
+      <h2 className="text-2xl font-semibold tracking-[-0.035em] text-white sm:text-3xl">
         {title}
       </h2>
-      <p className="text-muted-foreground text-base">{subtitle}</p>
-      <div className="mt-4 mx-auto w-16 h-1 bg-primary rounded-full" />
+      <p className="mt-1 font-mono text-xs text-zinc-500 sm:text-sm">
+        {subtitle}
+      </p>
     </div>
-  )
+  );
 }

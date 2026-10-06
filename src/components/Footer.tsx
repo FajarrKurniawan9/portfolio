@@ -1,7 +1,6 @@
 import type { SVGProps } from "react";
+import { ArrowUpRight } from "lucide-react";
 
-// lucide-react no longer ships brand/logo icons (Github, Linkedin, etc.) as of v1 —
-// inlined as minimal SVGs so they still inherit currentColor like any lucide icon would.
 function GithubIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -18,45 +17,50 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-const socials = [
-  { label: "GitHub", href: "https://github.com/FajarrKurniawan9", icon: GithubIcon },
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/FajarrKurniawan9",
+    icon: GithubIcon,
+  },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/mfajarkurniawan",
+    href: "https://www.linkedin.com/in/muhammad-fajar-kurniawan-568461327/",
     icon: LinkedinIcon,
   },
 ];
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-[hsl(0_0%_3%)] px-6 pt-10 pb-6 md:px-16">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
-        <div className="text-center font-mono text-[10px] text-muted-foreground sm:text-left">
-          <p>Muhammad Fajar Kurniawan</p>
-          <p>Backend Engineer &amp; Fullstack Enthusiast</p>
+    <footer className="border-t border-white/[0.06] bg-black px-6 py-12 md:px-16">
+      <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+        <div>
+          <div className="flex items-center gap-2 font-mono text-xs text-zinc-300">
+            <span className="size-1.5 rounded-full bg-emerald-500" />
+            <span>MUHAMMAD FAJAR KURNIAWAN</span>
+          </div>
+          <p className="mt-1 font-mono text-[11px] text-zinc-600">
+            &copy; {currentYear} &middot; Architected with Next.js, Tailwind v4 &amp; Geist typography
+          </p>
         </div>
 
-        <div className="flex gap-5">
-          {socials.map((social) => (
+        <div className="flex items-center gap-5 font-mono text-xs">
+          {socialLinks.map((social) => (
             <a
               key={social.label}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={social.label}
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="inline-flex items-center gap-1.5 text-zinc-500 transition-colors hover:text-zinc-200"
             >
-              <social.icon className="size-4" />
+              <social.icon className="size-3.5" />
+              <span>{social.label}</span>
+              <ArrowUpRight className="size-3 text-zinc-600" />
             </a>
           ))}
         </div>
-      </div>
-
-      <div className="mx-auto mt-8 max-w-5xl border-t border-border pt-6 text-center">
-        <p className="font-mono text-[10px] text-muted-foreground">
-          © {new Date().getFullYear()} Muhammad Fajar Kurniawan. All rights
-          reserved.
-        </p>
       </div>
     </footer>
   );
