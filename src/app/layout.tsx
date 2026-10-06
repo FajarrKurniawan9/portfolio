@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import { Sora, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 
-const sora = Sora({
+const geistSans = Geist({
   subsets: ["latin"],
-  weight: ["300", "400", "600", "700", "800"],
   variable: "--font-sans",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
   variable: "--font-mono",
 });
 
@@ -39,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className={cn(sora.variable, jetbrainsMono.variable)}>
+    <html lang="id" className={cn(geistSans.variable, geistMono.variable)}>
       <body className="antialiased">
         <Navbar />
         {children}
