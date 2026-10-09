@@ -32,6 +32,7 @@ export const projects: Project[] = [
     links: [
       { label: 'GitHub', url: 'https://github.com/FajarrKurniawan9/smasara-workspace.git' },
     ],
+    image: '/smasara_project.webp',
   },
   {
     title: 'Apos — Apotek Software',
