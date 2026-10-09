@@ -12,7 +12,8 @@ import {
   Terminal as TerminalIcon,
   Check,
   Server,
-  Zap
+  Zap,
+  Database
 } from "lucide-react";
 
 const CV_URL = "https://drive.google.com/file/d/1BqcjXUduvstMRwAbJwV1zRmrViBPKj1a/view?usp=sharing";
@@ -121,12 +122,12 @@ export default function Hero() {
         </FadeIn>
 
         {/* Mock Terminal/Console centered below */}
-        <FadeIn delay={0.3} className="mx-auto mt-16 max-w-3xl">
+        <FadeIn delay={0.3}>
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col  overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
+            className="mx-auto mt-16 max-w-3xl flex flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-2xl"
           >
             {/* Window header */}
             <div className="flex items-center gap-2 border-b border-border bg-background/50 px-4 py-3">
