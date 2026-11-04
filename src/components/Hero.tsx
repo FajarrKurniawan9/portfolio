@@ -54,24 +54,29 @@ export default function Hero() {
     <section
       id="hero"
       aria-label="Overview"
-      className="relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden border-b border-border bg-background px-6 pt-28 pb-16 text-foreground md:px-12 lg:px-16"
+      className="relative flex min-h-[100vh] flex-col items-center justify-center overflow-hidden border-b border-border bg-background px-6 pt-32 pb-20 text-foreground md:px-12 lg:px-16"
     >
-      <div className="mx-auto w-full max-w-5xl text-center">
+      {/* Background Glow Accent (Godly / LocalCan aesthetic) */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="mx-auto w-full max-w-5xl text-center relative z-10">
         {/* Top Pill / Badge */}
         <FadeIn delay={0}>
-          <div className="mx-auto mb-8 flex w-max items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-xs font-medium text-muted-foreground shadow-sm">
-            <span className="flex size-2 items-center justify-center rounded-full bg-primary/20">
-              <span className="size-1 rounded-full bg-primary" />
+          <div className="mx-auto mb-8 flex w-max items-center gap-2.5 rounded-full border border-border/80 bg-surface/80 backdrop-blur-md px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm">
+            <span className="flex size-2 items-center justify-center rounded-full bg-primary/20 animate-pulse">
+              <span className="size-1.5 rounded-full bg-primary" />
             </span>
-            Available for new opportunities
+            <span className="text-muted-foreground">Available for new opportunities</span>
           </div>
         </FadeIn>
 
-        {/* Massive Headline, Geist/LocalCan Style */}
+        {/* Massive Headline, Godly/LocalCan Style */}
         <FadeIn delay={0.1}>
-          <h1 className="mx-auto max-w-4xl text-5xl font-semibold tracking-[-0.04em] text-foreground sm:text-6xl md:text-7xl lg:text-[80px] lg:leading-[0.95]">
-            Building backends <br />
-            <span className="text-muted-foreground">that scale reliably.</span>
+          <h1 className="mx-auto max-w-4xl text-5xl font-bold tracking-[-0.04em] text-foreground sm:text-6xl md:text-7xl lg:text-[84px] lg:leading-[0.95]">
+            Engineering systems <br />
+            <span className="bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground bg-clip-text text-transparent">
+              that scale without friction.
+            </span>
           </h1>
         </FadeIn>
 
