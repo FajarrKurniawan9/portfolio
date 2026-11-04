@@ -25,7 +25,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/muhammad-fajar-kurniawan-568461327/",
+    href: "www.linkedin.com/in/mfajarkurniawan",
     icon: LinkedinIcon,
   },
 ];
