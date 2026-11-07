@@ -1,11 +1,9 @@
-import SectionTitle from "@/components/SectionTitle";
 import FadeIn from "@/components/FadeIn";
 import { skills } from "@/data/skills";
 import {
   Server,
   Layers,
   Database,
-  Cpu,
   Terminal,
   FileCode2,
   Code2,
@@ -56,25 +54,25 @@ export default function Skills() {
     <section
       id="skills"
       aria-label="Technical Capabilities & Modules"
-      className="border-b border-white/[0.06] bg-zinc-950 px-6 py-24 md:px-16"
+      className="border-b border-border bg-transparent px-4 py-16 sm:px-6 md:px-16 md:py-24"
     >
       <div className="mx-auto max-w-5xl">
         <FadeIn delay={0}>
-          <div className="flex flex-col items-start justify-between gap-4 border-b border-white/[0.08] pb-6 sm:flex-row sm:items-end">
+          <div className="flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:flex-row sm:items-end">
             <div>
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-zinc-500">
-                <Terminal className="size-3 text-zinc-400" />
-                SYSTEM CAPABILITIES // RUNTIME STACK
+              <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                <Terminal className="size-3 text-accent" />
+                SKILLS // TECHNICAL STACK
               </div>
-              <h2 className="mt-1 text-2xl font-semibold tracking-[-0.035em] text-white sm:text-3xl">
-                Engineering Stack
+              <h2 className="mt-1 text-2xl font-semibold tracking-[-0.035em] text-foreground sm:text-3xl">
+                Technical Skills
               </h2>
-              <p className="mt-1 font-mono text-xs text-zinc-500 sm:text-sm">
-                Daftar modul, protokol, dan framework yang digunakan dalam arsitektur sistem
+              <p className="mt-1 font-mono text-xs text-muted-foreground sm:text-sm">
+                Frameworks, languages, and tools I use to design and build reliable systems
               </p>
             </div>
 
-            <div className="font-mono text-[11px] text-zinc-500">
+            <div className="font-mono text-[11px] text-muted-foreground">
               SPEC: TS 5.x &middot; NODE LTS
             </div>
           </div>
@@ -85,35 +83,35 @@ export default function Skills() {
           {/* Backend Modules */}
           <FadeIn delay={0.1}>
             <div>
-              <div className="mb-3 flex items-center justify-between border-b border-white/[0.08] pb-2 font-mono text-xs">
-                <span className="font-semibold uppercase tracking-wider text-zinc-300">
-                  01 // Core Backend & Infrastructure
+              <div className="mb-3 flex items-center justify-between border-b border-border pb-2 font-mono text-xs">
+                <span className="font-semibold uppercase tracking-wider text-foreground">
+                  01 // Backend &amp; Architecture
                 </span>
-                <span className="text-[10px] text-zinc-500">ACTIVE SPECIALIZATION</span>
+                <span className="text-[10px] text-accent">PRIMARY FOCUS</span>
               </div>
 
-              <div className="divide-y divide-white/[0.06]">
+              <div className="divide-y divide-border">
                 {backendSkills.map((skill) => {
                   const Icon = skillIcons[skill.name] ?? Code2;
                   return (
                     <div
                       key={skill.name}
-                      className="group flex flex-col justify-between py-3.5 transition-colors duration-150 hover:bg-white/[0.02] sm:flex-row sm:items-center sm:py-3 px-2 -mx-2"
+                      className="group flex flex-col justify-between py-3.5 transition-colors duration-150 hover:bg-surface/50 sm:flex-row sm:items-center sm:py-3 px-2 -mx-2"
                     >
                       <div className="flex items-center gap-3">
-                        <Icon className="size-4 shrink-0 text-zinc-400 group-hover:text-white transition-colors" />
+                        <Icon className="size-4 shrink-0 text-muted-foreground group-hover:text-accent transition-colors" />
                         <div>
-                          <span className="font-mono text-sm font-medium text-zinc-200 group-hover:text-white transition-colors">
+                          <span className="font-mono text-sm font-medium text-foreground group-hover:text-accent transition-colors">
                             {skill.name}
                           </span>
-                          <p className="font-mono text-xs text-zinc-500 sm:hidden mt-0.5">
+                          <p className="font-mono text-xs text-muted-foreground sm:hidden mt-0.5">
                             {skillNotes[skill.name]}
                           </p>
                         </div>
                       </div>
 
                       <div className="hidden sm:block text-right">
-                        <span className="font-mono text-xs text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                        <span className="font-mono text-xs text-muted-foreground transition-colors">
                           {skillNotes[skill.name]}
                         </span>
                       </div>
@@ -127,35 +125,35 @@ export default function Skills() {
           {/* Frontend Presentation */}
           <FadeIn delay={0.15}>
             <div>
-              <div className="mb-3 flex items-center justify-between border-b border-white/[0.08] pb-2 font-mono text-xs">
-                <span className="font-semibold uppercase tracking-wider text-zinc-300">
-                  02 // Presentation & Client Tier
+              <div className="mb-3 flex items-center justify-between border-b border-border pb-2 font-mono text-xs">
+                <span className="font-semibold uppercase tracking-wider text-foreground">
+                  02 // Frontend &amp; Web Tier
                 </span>
-                <span className="text-[10px] text-zinc-500">FULLSTACK EXPANSION</span>
+                <span className="text-[10px] text-muted-foreground">CLIENT APPS</span>
               </div>
 
-              <div className="divide-y divide-white/[0.06]">
+              <div className="divide-y divide-border">
                 {frontendSkills.map((skill) => {
                   const Icon = skillIcons[skill.name] ?? Code2;
                   return (
                     <div
                       key={skill.name}
-                      className="group flex flex-col justify-between py-3.5 transition-colors duration-150 hover:bg-white/[0.02] sm:flex-row sm:items-center sm:py-3 px-2 -mx-2"
+                      className="group flex flex-col justify-between py-3.5 transition-colors duration-150 hover:bg-surface/50 sm:flex-row sm:items-center sm:py-3 px-2 -mx-2"
                     >
                       <div className="flex items-center gap-3">
-                        <Icon className="size-4 shrink-0 text-zinc-400 group-hover:text-white transition-colors" />
+                        <Icon className="size-4 shrink-0 text-muted-foreground group-hover:text-accent transition-colors" />
                         <div>
-                          <span className="font-mono text-sm font-medium text-zinc-200 group-hover:text-white transition-colors">
+                          <span className="font-mono text-sm font-medium text-foreground group-hover:text-accent transition-colors">
                             {skill.name}
                           </span>
-                          <p className="font-mono text-xs text-zinc-500 sm:hidden mt-0.5">
+                          <p className="font-mono text-xs text-muted-foreground sm:hidden mt-0.5">
                             {skillNotes[skill.name]}
                           </p>
                         </div>
                       </div>
 
                       <div className="hidden sm:block text-right">
-                        <span className="font-mono text-xs text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                        <span className="font-mono text-xs text-muted-foreground transition-colors">
                           {skillNotes[skill.name]}
                         </span>
                       </div>
@@ -169,35 +167,35 @@ export default function Skills() {
           {/* DevOps & Tooling */}
           <FadeIn delay={0.2}>
             <div>
-              <div className="mb-3 flex items-center justify-between border-b border-white/[0.08] pb-2 font-mono text-xs">
-                <span className="font-semibold uppercase tracking-wider text-zinc-300">
-                  03 // DevOps, Tooling & Protocol
+              <div className="mb-3 flex items-center justify-between border-b border-border pb-2 font-mono text-xs">
+                <span className="font-semibold uppercase tracking-wider text-foreground">
+                  03 // DevOps &amp; Developer Tools
                 </span>
-                <span className="text-[10px] text-zinc-500">OPERATIONAL PIPELINE</span>
+                <span className="text-[10px] text-muted-foreground">WORKFLOW</span>
               </div>
 
-              <div className="divide-y divide-white/[0.06]">
+              <div className="divide-y divide-border">
                 {toolSkills.map((skill) => {
                   const Icon = skillIcons[skill.name] ?? Code2;
                   return (
                     <div
                       key={skill.name}
-                      className="group flex flex-col justify-between py-3.5 transition-colors duration-150 hover:bg-white/[0.02] sm:flex-row sm:items-center sm:py-3 px-2 -mx-2"
+                      className="group flex flex-col justify-between py-3.5 transition-colors duration-150 hover:bg-surface/50 sm:flex-row sm:items-center sm:py-3 px-2 -mx-2"
                     >
                       <div className="flex items-center gap-3">
-                        <Icon className="size-4 shrink-0 text-zinc-400 group-hover:text-white transition-colors" />
+                        <Icon className="size-4 shrink-0 text-muted-foreground group-hover:text-accent transition-colors" />
                         <div>
-                          <span className="font-mono text-sm font-medium text-zinc-200 group-hover:text-white transition-colors">
+                          <span className="font-mono text-sm font-medium text-foreground group-hover:text-accent transition-colors">
                             {skill.name}
                           </span>
-                          <p className="font-mono text-xs text-zinc-500 sm:hidden mt-0.5">
+                          <p className="font-mono text-xs text-muted-foreground sm:hidden mt-0.5">
                             {skillNotes[skill.name]}
                           </p>
                         </div>
                       </div>
 
                       <div className="hidden sm:block text-right">
-                        <span className="font-mono text-xs text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                        <span className="font-mono text-xs text-muted-foreground transition-colors">
                           {skillNotes[skill.name]}
                         </span>
                       </div>

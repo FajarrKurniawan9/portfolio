@@ -14,7 +14,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Askala — Asisten Kerjasama Lingkungan Sekolah',
+    title: 'Askala - Asisten Kerjasama Lingkungan Sekolah',
     description:
       'Software untuk mempermudah akses ke data publik sekolah.',
     tech: ['Next.js', 'NestJS', 'Supabase', 'Vercel'],
@@ -25,7 +25,7 @@ export const projects: Project[] = [
     image: '/ProjectSatu_Screenshot.png',
   },
   {
-    title: 'Smasara — Smara Aksara',
+    title: 'Smasara - Smara Aksara',
     description:
       'Sistem catatan komprehensif untuk ekosistem yang lebih efisien.',
     tech: ['Go (Fiber)', 'SvelteKit', 'Tailwind CSS', 'PostgreSQL', 'Docker'],
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     image: '/smasara_project.webp',
   },
   {
-    title: 'Apos — Apotek Software',
+    title: 'Apos - Apotek Software',
     description:
       'Aplikasi manajemen apotek berbasis web untuk mengelola data dan transaksi obat.',
     tech: ['Laravel 12', 'React'],

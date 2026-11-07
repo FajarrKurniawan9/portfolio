@@ -93,39 +93,39 @@ export default async function OpenSource() {
     <section
       id="open-source"
       aria-label="Open Source & Version Control Telemetry"
-      className="border-b border-white/[0.06] bg-zinc-950 px-6 py-24 md:px-16"
+      className="border-b border-border bg-transparent px-4 py-16 sm:px-6 md:px-16 md:py-24"
     >
       <div className="mx-auto max-w-5xl">
         <FadeIn delay={0}>
-          <div className="flex flex-col items-start justify-between gap-4 border-b border-white/[0.08] pb-6 sm:flex-row sm:items-end">
+          <div className="flex flex-col items-start justify-between gap-4 border-b border-border pb-6 sm:flex-row sm:items-end">
             <div>
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] text-zinc-400 uppercase tracking-widest">
-                <FolderGit2 className="size-3 text-emerald-400" />
-                VCS ACTIVITY // GITHUB
+              <div className="inline-flex items-center gap-2 font-mono text-[11px] text-muted-foreground uppercase tracking-widest">
+                <FolderGit2 className="size-3 text-accent" />
+                GITHUB // OPEN SOURCE
               </div>
-              <h2 className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-white sm:text-3xl">
+              <h2 className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-foreground sm:text-3xl">
                 Recent Repositories
               </h2>
-              <p className="mt-1 text-xs text-zinc-400 sm:text-sm">
-                3 repositori paling aktif yang diambil langsung dari GitHub API
+              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                Active projects and public code synced directly from GitHub
               </p>
             </div>
 
             <Button
               variant="outline"
               nativeButton={false}
-              className="h-8 gap-1.5 rounded-none border border-white/10 bg-zinc-900/60 px-3 font-mono text-xs text-zinc-300 transition-colors hover:border-white/20 hover:bg-zinc-900 hover:text-white"
+              className="h-8 gap-1.5 rounded-none border border-border bg-surface px-3 font-mono text-xs text-foreground transition-colors hover:border-accent/60 hover:bg-surface-raised"
               render={
                 <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" />
               }
             >
               github.com/{GITHUB_USERNAME}
-              <ArrowUpRight className="size-3 text-zinc-400" />
+              <ArrowUpRight className="size-3 text-muted-foreground" />
             </Button>
           </div>
         </FadeIn>
 
-        {/* 3 Repository Cards — Precision GitHub/Vercel Aesthetic */}
+        {/* 3 Repository Cards - Precision GitHub/Vercel Aesthetic */}
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {repos.map((repo, index) => {
             const lang = repo.language || "Config";
@@ -140,46 +140,46 @@ export default async function OpenSource() {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex h-full flex-col justify-between border border-white/[0.08] bg-black p-5 transition-all duration-200 hover:border-white/25 hover:bg-zinc-900/30"
+                  className="group relative flex h-full flex-col justify-between border border-border bg-surface p-5 transition-all duration-200 hover:border-accent/60 hover:bg-surface-raised"
                 >
                   <div>
                     {/* Top branch & outward link indicator */}
                     <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-1.5 text-zinc-400">
-                        <GitBranch className="size-3.5 text-zinc-400" />
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-zinc-400">
+                      <div className="flex items-center gap-1.5 text-muted-foreground">
+                        <GitBranch className="size-3.5 text-muted-foreground" />
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                           {repo.default_branch || "main"}
                         </span>
                       </div>
 
-                      <ArrowUpRight className="size-3.5 text-zinc-600 transition-colors duration-200 group-hover:text-white" />
+                      <ArrowUpRight className="size-3.5 text-muted-foreground transition-colors duration-200 group-hover:text-foreground" />
                     </div>
 
                     {/* Repository Identifier */}
-                    <h3 className="mt-3 font-mono text-sm font-semibold tracking-tight text-white transition-colors group-hover:text-zinc-200">
+                    <h3 className="mt-3 font-mono text-sm font-semibold tracking-tight text-foreground transition-colors group-hover:text-accent">
                       {repo.name}
                     </h3>
 
                     {/* Repository Description */}
-                    <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-zinc-400">
+                    <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-muted-foreground">
                       {description}
                     </p>
                   </div>
 
                   {/* Metadata Row: Language badge + Stats */}
-                  <div className="mt-6 flex items-center justify-between border-t border-white/[0.06] pt-3.5 font-mono text-[11px] text-zinc-400">
+                  <div className="mt-6 flex items-center justify-between border-t border-border pt-3.5 font-mono text-[11px] text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <span className={`size-2 rounded-full ${langDotColor}`} />
-                      <span className="text-zinc-300">{lang}</span>
+                      <span className="text-foreground">{lang}</span>
                     </div>
 
-                    <div className="flex items-center gap-3 text-zinc-400">
-                      <div className="flex items-center gap-1 hover:text-zinc-300">
-                        <Star className="size-3 text-zinc-400" />
+                    <div className="flex items-center gap-3 text-muted-foreground">
+                      <div className="flex items-center gap-1 hover:text-foreground">
+                        <Star className="size-3 text-muted-foreground" />
                         <span>{repo.stargazers_count}</span>
                       </div>
-                      <div className="flex items-center gap-1 hover:text-zinc-300">
-                        <GitFork className="size-3 text-zinc-400" />
+                      <div className="flex items-center gap-1 hover:text-foreground">
+                        <GitFork className="size-3 text-muted-foreground" />
                         <span>{repo.forks_count}</span>
                       </div>
                     </div>
@@ -192,12 +192,12 @@ export default async function OpenSource() {
 
         {/* Telemetry Status Line */}
         <FadeIn delay={0.35}>
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border border-white/[0.06] bg-zinc-900/20 px-4 py-2.5 font-mono text-[11px] text-zinc-400">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border border-border bg-surface px-4 py-2.5 font-mono text-[11px] text-muted-foreground">
             <div className="flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-emerald-500" />
-              <span>LIVE REPO TELEMETRY SYNCHRONIZED</span>
+              <span className="size-1.5 rounded-full bg-accent" />
+              <span>GITHUB REPOSITORIES SYNCED</span>
             </div>
-            <span className="text-[10px] text-zinc-400">
+            <span className="text-[10px] text-muted-foreground/80">
               ENDPOINT: /users/{GITHUB_USERNAME}/repos?sort=updated
             </span>
           </div>
