@@ -2,8 +2,6 @@
 
 Website portofolio pribadi milik **Muhammad Fajar Kurniawan**, seorang *Backend Developer & Fullstack Enthusiast* yang juga menyukai buku dan filsafat. Website ini dibangun menggunakan **Next.js** dan menampilkan profil, keahlian (skills), pengalaman/pendidikan, daftar proyek, hingga formulir kontak yang terhubung ke email.
 
-> 🚧 **Status:** Proyek ini masih dalam tahap pengembangan aktif. Beberapa data (seperti daftar proyek dan pengalaman) masih berisi teks contoh (*Lorem Ipsum*) yang akan diganti dengan data asli seiring waktu.
-
 ---
 
 ## ✨ Fitur
