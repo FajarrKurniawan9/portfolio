@@ -34,14 +34,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/[0.06] bg-black px-6 py-12 md:px-16">
+    <footer className="border-t border-border bg-background px-4 py-12 sm:px-6 md:px-16">
       <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
         <div>
-          <div className="flex items-center gap-2 font-mono text-xs text-zinc-300">
-            <span className="size-1.5 rounded-full bg-emerald-500" />
+          <div className="flex items-center gap-2 font-mono text-xs text-foreground">
+            <span className="size-1.5 rounded-full bg-accent" />
             <span>MUHAMMAD FAJAR KURNIAWAN</span>
           </div>
-          <p className="mt-1 font-mono text-[11px] text-zinc-600">
+          <p className="mt-1 font-mono text-[11px] text-muted-foreground">
             &copy; {currentYear} &middot; Architected with Next.js, Tailwind v4 &amp; Geist typography
           </p>
         </div>
@@ -53,11 +53,11 @@ export default function Footer() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-zinc-500 transition-colors hover:text-zinc-200"
+              className="inline-flex items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground"
             >
               <social.icon className="size-3.5" />
               <span>{social.label}</span>
-              <ArrowUpRight className="size-3 text-zinc-600" />
+              <ArrowUpRight className="size-3 text-muted-foreground" />
             </a>
           ))}
         </div>
